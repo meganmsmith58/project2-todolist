@@ -10,3 +10,34 @@ document.getElementById('month').innerHTML = todaysMonth;
 //let todaysDate = dateArray [new Date().getDate()];
 document.getElementById('date').innerHTML = [new Date().getDate()] + ', ';
 document.getElementById('year').innerHTML = [new Date().getFullYear()];
+
+
+function addList() {
+    let myListTitle = $('#addListInput').val();
+    $('#list').append("<div class='listTitle'>" +
+        "<span contenteditable='true'>" + myListTitle + "</span>" +
+        //"<i onclick='' class=\"far fa-plus-square\"></i>" +
+        "<div class='taskBox'></div>" +
+        "</div>");
+    $('#addListInput').val("");
+
+}
+
+function addTask() {
+
+}
+
+function addButton(event) {
+    switch(event.keyCode) {
+        case 13:
+            addList();
+            break;
+    }
+}
+
+
+
+
+
+
+//"<input type='checkbox'>" +
