@@ -11,19 +11,23 @@ document.getElementById('month').innerHTML = todaysMonth;
 document.getElementById('date').innerHTML = [new Date().getDate()] + ', ';
 document.getElementById('year').innerHTML = [new Date().getFullYear()];
 
+listNumber = 0;
 
 function addList() {
     let myListTitle = $('#addListInput').val();
+    listNumber++;
     $('#list').append("<div class='listTitle'>" +
         "<span contenteditable='true'>" + myListTitle + "</span>" +
         "<input type='text' id='addTaskInput' placeholder='Add Tasks Here' onkeyup='addTaskButton(event)'>" +
-        "<button class=\"btn btn-outline-secondary\" onclick='addTask()'>+</button>" +
+        "<button class='btn btn-outline-secondary' onclick='addTask()'>+</button>" +
         "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"></i>" +
-        "<div class='taskBox'></div>" +
+        "<div class='taskBox" + listNumber +"'></div>" +
         "</div>");
     $('#addListInput').val("");
 
 }
+
+//how to reference .taskBox when it goes up each time
 
 function addTask() {
     let myTask = $('#addTaskInput').val();

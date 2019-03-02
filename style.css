@@ -7,14 +7,37 @@ body {
     height: 100%;
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: center;
+
+    background-color: #F2F2F2;
 }
+
+.mainContainer {
+
+}
+
+.topContainer {
+    width: 100%;
+    height: 100px;
+
+}
+
+.middleContainer {
+
+}
+
 .listTitle {
     border: 1px solid lightblue;
 }
 
 .taskBox {
-    padding: 100px;
+    padding: 50px;
     border: 1px solid red;
+}
+#addListInput, #addTaskInput {
+    border-radius: 5px;
+    height: 40px;
+}
+.btn {
+    color: #3E3E3E;
+    border-color: #3E3E3E;
 }

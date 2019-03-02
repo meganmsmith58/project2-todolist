@@ -14,16 +14,20 @@
 </head>
 <body>
 <div class="mainContainer">
-    <h1>My To Do Lists</h1>
-    <div>
-        <span id="day"></span>
-        <span id="month"></span>
-        <span id="date"></span>
-        <span id="year"></span>
+    <div class="topContainer">
+        <h1>My To Do Lists</h1>
+        <div>
+            <span id="day"></span>
+            <span id="month"></span>
+            <span id="date"></span>
+            <span id="year"></span>
+        </div>
     </div>
-    <input type="text" id="addListInput" placeholder="List Name Here" onkeyup="addButton(event)">
-    <button class="btn btn-outline-secondary" onclick="addList()">+</button>
-    <div id="list"></div>
+    <div class="middleContainer">
+        <input type="text" id="addListInput" placeholder="List Name Here" onkeyup="addButton(event)">
+        <button class="btn btn-outline-secondary" onclick="addList()">+</button>
+        <div id="list"></div>
+    </div>
 </div>
 
 
