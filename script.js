@@ -16,7 +16,8 @@ function addList() {
     let myListTitle = $('#addListInput').val();
     $('#list').append("<div class='listTitle'>" +
         "<span contenteditable='true'>" + myListTitle + "</span>" +
-        //"<i onclick='' class=\"far fa-plus-square\"></i>" +
+        "<input type='text' id='addTaskInput' placeholder='Add Tasks Here' onkeyup='addTaskButton(event)'>" +
+        "<button onclick='addTask()'>+</button>" +
         "<div class='taskBox'></div>" +
         "</div>");
     $('#addListInput').val("");
@@ -24,7 +25,13 @@ function addList() {
 }
 
 function addTask() {
-
+    let myTask = $('#addTaskInput').val();
+    $('.taskBox').append("<div class='eachTask'>" +
+        "<input type='checkbox'>" +
+        "<span contenteditable='true'>" + myTask + "</span> " +
+        "<i class=\"far fa-trash-alt\"></i>" +
+        "</div>");
+    $('#addTaskInput').val("");
 }
 
 function addButton(event) {
@@ -34,10 +41,19 @@ function addButton(event) {
             break;
     }
 }
+function addTaskButton(event) {
+    switch(event.keyCode) {
+        case 13:
+            addTask();
+            break;
+    }
+}
 
 
 
+//"<input type='text' class='taskInput' onkeyup='addButton(event)'>" +
 
 
+//
 
-//"<input type='checkbox'>" +
+//"<i onclick='' class=\"far fa-plus-square\"></i>" +
