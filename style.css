@@ -7,8 +7,9 @@ body {
     height: 100%;
     padding: 0;
     margin: 0;
-
     background-color: #F2F2F2;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
 }
 
 .mainContainer {
@@ -17,12 +18,27 @@ body {
 
 .topContainer {
     width: 100%;
-    height: 100px;
-
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+    background-color: #3E3E3E;
+    color: #FFFFFF;
+    align-items: center;
+}
+.mainHeader {
+    font-family: 'Sigmar One', cursive;
+    font-size: 50px;
+    margin-top: 20px;
+}
+.todaysDate {
+    margin-bottom: 5px;
 }
 
 .middleContainer {
-
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .listTitle {
@@ -36,8 +52,8 @@ body {
 #addListInput, #addTaskInput {
     border-radius: 5px;
     height: 40px;
+    box-sizing: unset;
 }
 .btn {
-    color: #3E3E3E;
-    border-color: #3E3E3E;
+    background-color: #F2F2F2;
 }
