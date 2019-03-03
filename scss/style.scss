@@ -1,0 +1,86 @@
+$lightgrey: #F1F1F1;
+$pink: #DB5756;
+$lightblue: #A8C9DA;
+$medblue: #49738C;
+$darkblue: #061324;
+$mainfont: 'Raleway', sans-serif;
+$accentfont: 'Sigmar One', cursive;
+
+@mixin inputBox {
+  border-radius: 5px;
+  height: 40px;
+  box-sizing: unset;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: $lightblue;
+  font-family: $mainfont;
+  font-size: 20px;
+  color: $darkblue;
+}
+
+.mainContainer {
+
+}
+
+.topContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+  background-color: $medblue;
+  color: #FFFFFF;
+  align-items: center;
+
+  .mainHeader {
+    font-family: $accentfont;
+    font-size: 50px;
+    margin-top: 20px;
+  }
+
+  .todaysDate {
+    margin-bottom: 5px;
+  }
+
+  #addListInput {
+    @include inputBox;
+    margin-bottom: 20px;
+  }
+}
+
+.middleContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+#list {
+  background-color: $lightgrey;
+}
+
+.listTitle {
+
+  font-family: $accentfont;
+}
+
+.taskBox {
+  padding: 50px;
+
+  font-family: $mainfont;
+}
+#addTaskInput {
+  @include inputBox;
+  font-family: $mainfont;
+}
+.btn {
+  background-color: $lightgrey;
+}

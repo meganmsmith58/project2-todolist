@@ -17,7 +17,7 @@ function addList() {
     let myListTitle = $('#addListInput').val();
     //listNumber++;
     $('#list').append("<div class='listTitle'>" +
-        "<span contenteditable='true'>" + myListTitle + "</span>" +
+        "<div contenteditable='true'>" + myListTitle + "</div>" +
         "<input type='text' id='addTaskInput' placeholder='Add Tasks Here' onkeyup='addTaskButton(event)'>" +
         "<button class='btn btn-outline-secondary' onclick='addTask()'>+</button>" +
         "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"></i>" +

@@ -1,0 +1,57 @@
+html {
+  height: 100%; }
+
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #A8C9DA;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  color: #061324; }
+
+.topContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+  background-color: #49738C;
+  color: #FFFFFF;
+  align-items: center; }
+  .topContainer .mainHeader {
+    font-family: "Sigmar One", cursive;
+    font-size: 50px;
+    margin-top: 20px; }
+  .topContainer .todaysDate {
+    margin-bottom: 5px; }
+  .topContainer #addListInput {
+    border-radius: 5px;
+    height: 40px;
+    box-sizing: unset;
+    margin-bottom: 20px; }
+
+.middleContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+#list {
+  background-color: #F1F1F1; }
+
+.listTitle {
+  font-family: "Sigmar One", cursive; }
+
+.taskBox {
+  padding: 50px;
+  font-family: "Raleway", sans-serif; }
+
+#addTaskInput {
+  border-radius: 5px;
+  height: 40px;
+  box-sizing: unset;
+  font-family: "Raleway", sans-serif; }
+
+.btn {
+  background-color: #F1F1F1; }
