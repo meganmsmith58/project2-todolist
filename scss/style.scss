@@ -66,11 +66,16 @@ body {
 #list {
   background-color: #FFFFFF;
   box-shadow: 20px 20px 50px $greytwo;
+  margin: 20px;
+}
+
+.listBox {
+  padding: 20px;
 }
 
 .listTitle {
-
   font-family: $accentfont;
+  font-size: 30px;
 }
 
 .taskBox {

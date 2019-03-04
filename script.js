@@ -12,18 +12,20 @@ document.getElementById('date').innerHTML = [new Date().getDate()] + ', ';
 document.getElementById('year').innerHTML = [new Date().getFullYear()];
 
 //listNumber = 0;
+$('#addListInput').focus();
 
 function addList() {
     let myListTitle = $('#addListInput').val();
     //listNumber++;
-    $('#list').append("<div class='listTitle'>" +
-        "<div contenteditable='true'>" + myListTitle + "</div>" +
+    $('#list').append("<div class='listBox'>" +
+        "<div class='listTitle' contenteditable='true'>" + myListTitle + "</div>" +
         "<input type='text' id='addTaskInput' placeholder='Add Tasks Here' onkeyup='addTaskButton(event)'>" +
         "<button class='btn btn-outline-secondary' onclick='addTask()'>+</button>" +
-        "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"></i>" +
         "<div class='taskBox'></div>" +
+        "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"</i>" +
         "</div>");
     $('#addListInput').val("");
+    $('#addTaskInput').focus();
 
 }
 
@@ -57,7 +59,10 @@ function addTaskButton(event) {
 }
 
 function deleteTask(element) {
-    $(element).parent().remove();
+  //  $(element).parent().fadeOut('slow', function() {
+        $(element).parent().remove();
+   // });
+
 }
 
 
