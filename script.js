@@ -11,35 +11,34 @@ document.getElementById('month').innerHTML = todaysMonth;
 document.getElementById('date').innerHTML = [new Date().getDate()] + ', ';
 document.getElementById('year').innerHTML = [new Date().getFullYear()];
 
-//listNumber = 0;
+listNumber = 0;
 $('#addListInput').focus();
 
 function addList() {
     let myListTitle = $('#addListInput').val();
-    //listNumber++;
+    listNumber++;
     $('#list').append("<div class='listBox'>" +
         "<div class='listTitle' contenteditable='true'>" + myListTitle + "</div>" +
-        "<input type='text' id='addTaskInput' placeholder='Add Tasks Here' onkeyup='addTaskButton(event)'>" +
-        "<button class='btn btn-outline-secondary' onclick='addTask()'>+</button>" +
-        "<div class='taskBox'></div>" +
+        "<input type='text' id='addTaskInput" + listNumber +"' placeholder='Add Tasks Here' onkeyup='addTaskButton(event," + listNumber +")'>" +
+        "<button class='btn btn-outline-secondary' onclick='addTask(" + listNumber +")'>+</button>" +
+        "<div class='taskBox' id='taskBoxId" + listNumber +"'></div>" +
         "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"</i>" +
         "</div>");
     $('#addListInput').val("");
     $('#addTaskInput').focus();
-
 }
 
-//how to reference .taskBox when it goes up each time
+
 //" + listNumber +"
 
-function addTask() {
-    let myTask = $('#addTaskInput').val();
-    $('.taskBox').append("<div class='eachTask'>" +
+function addTask(id) {
+    let myTask = $('#addTaskInput' + id).val();
+    $('#taskBoxId' + id).append("<div class='eachTask'>" +
         "<input type='checkbox'>" +
-        "<span contenteditable='true'>" + myTask + "</span> " +
+        "<span contenteditable='true'>" + myTask + "</span>" +
         "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"></i>" +
         "</div>");
-    $('#addTaskInput').val("");
+    $('#addTaskInput' + id).val("");
 }
 
 function addButton(event) {
@@ -50,10 +49,10 @@ function addButton(event) {
     }
 }
 
-function addTaskButton(event) {
+function addTaskButton(event, id) {
     switch(event.keyCode) {
         case 13:
-            addTask();
+            addTask(id);
             break;
     }
 }

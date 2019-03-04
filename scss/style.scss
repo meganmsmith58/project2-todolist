@@ -59,18 +59,22 @@ body {
 
 .middleContainer {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+
+
 }
 
 #list {
-  background-color: #FFFFFF;
-  box-shadow: 20px 20px 50px $greytwo;
-  margin: 20px;
+  display: flex;
 }
 
 .listBox {
   padding: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 20px 20px 50px $greytwo;
+  margin: 20px;
+  flex-wrap: wrap;
+
+
 }
 
 .listTitle {
