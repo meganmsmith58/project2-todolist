@@ -25,6 +25,7 @@ body {
   font-family: $mainfont;
   font-size: 20px;
   color: $greyfive;
+  position: relative;
 }
 
 .mainContainer {
@@ -89,4 +90,13 @@ body {
 }
 .btn {
   background-color: $greyone;
+}
+
+.clearButton {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+
 }

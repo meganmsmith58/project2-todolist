@@ -8,13 +8,14 @@ document.getElementById('month').innerHTML = todaysMonth;
 document.getElementById('date').innerHTML = [new Date().getDate()] + ', ';
 document.getElementById('year').innerHTML = [new Date().getFullYear()];
 
-listNumber = 0;
+let listNumber = 0;
+let taskNumber = 0;
 $('#addListInput').focus();
 
-retrieveLocalStorage();
+let masterList = retrieveLocalStorage() || new AllLists();
 
-displayText();
-function displayText() {
+displayLists();
+function displayLists() {
     const savedstuff = $('.list');
     savedstuff.html('');
     for (let i = 0; i < masterList.length; i++) {
@@ -43,12 +44,13 @@ function addList() {
 function addTask(id) {
     let myTask = $('#addTaskInput' + id).val();
     $('#taskBoxId' + id).append("<div class='eachTask'>" +
-        "<input onclick='completedTask()' id='checkboxChecked' type='checkbox'>" +
+        "<input onclick='completedTask(" + id +", " + taskNumber +")' id='checkboxChecked'" + taskNumber + " type='checkbox'>" +
         "<span contenteditable='true'>" + myTask + "</span>" +
         "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"></i>" +
         "</div>");
     masterList.collection[id].add( $('#addTaskInput' + id).val());
     $('#addTaskInput' + id).val("");
+    taskNumber++;
     saveLocalStorage();
 
 }
@@ -69,18 +71,27 @@ function addTaskButton(event, id) {
     }
 }
 
-function completedTask () {
-    document.getElementById('checkboxChecked').checked = true;
-}
-
 function saveLocalStorage() {
     localStorage.setItem('data', JSON.stringify(masterList.collection));
-    retrieveLocalStorage();
+
 }
 
 function retrieveLocalStorage() {
     let pageText = localStorage.getItem('data');
-    return JSON.parse(pageText);
+    let lists = JSON.parse(pageText);
+
+    let newAllLists = new AllLists();
+
+    lists.forEach(list => {
+        let newSingleList = new SingleList();
+        newSingleList.name = list.name;
+        newSingleList.collection = list.collection;
+        newAllLists.collection.push(newSingleList);
+    });
+
+    newAllLists.collection = lists;
+
+    return newAllLists;
 }
 
 function deleteTask(element) {
@@ -90,10 +101,16 @@ function deleteTask(element) {
 
 }
 
+function completedTask (listIndex, taskIndex) {
+    if ($('#checkboxChecked').prop('checked')) {
+        masterList.collection[listIndex].collection[taskIndex].completed =  true;
+    }
 
-//"<input type='text' class='taskInput' onkeyup='addButton(event)'>" +
+}
 
+function clearCompleted () {
+    if (Item(completed === true)) {
+        this.remove();
+    }
+}
 
-//
-
-//"<i onclick='' class=\"far fa-plus-square\"></i>" +

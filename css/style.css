@@ -9,7 +9,8 @@ body {
   background-color: #F2F2F2;
   font-family: "Raleway", sans-serif;
   font-size: 20px;
-  color: #252525; }
+  color: #252525;
+  position: relative; }
 
 .topContainer {
   width: 100%;
@@ -60,3 +61,10 @@ body {
 
 .btn {
   background-color: #F2F2F2; }
+
+.clearButton {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 20px; }

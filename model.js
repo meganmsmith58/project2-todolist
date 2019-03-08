@@ -1,5 +1,5 @@
 
-let masterList = new AllLists();
+
 
 function AllLists() {
     this.collection = [];
