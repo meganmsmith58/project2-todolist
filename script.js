@@ -10,12 +10,21 @@ document.getElementById('year').innerHTML = [new Date().getFullYear()];
 
 listNumber = 0;
 $('#addListInput').focus();
-let taskArray = [];
 
+retrieveLocalStorage();
+
+displayText();
+function displayText() {
+    const savedstuff = $('.list');
+    savedstuff.html('');
+    for (let i = 0; i < masterList.length; i++) {
+        savedstuff.append(`<div>${masterList[i]}</div>`);
+    }
+}
 
 function addList() {
     let myListTitle = $('#addListInput').val();
-    listNumber++;
+
     $('#list').append("<div class='listBox'>" +
         "<div class='listTitle' contenteditable='true'>" + myListTitle + "</div>" +
         "<input type='text' id='addTaskInput" + listNumber +"' placeholder='Add Tasks Here' onkeyup='addTaskButton(event," + listNumber +")'>" +
@@ -23,39 +32,55 @@ function addList() {
         "<div class='taskBox' id='taskBoxId" + listNumber +"'></div>" +
         "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"</i>" +
         "</div>");
+    masterList.add( $('#addListInput').val());
     $('#addListInput').val("");
     $('#addTaskInput').focus();
+    listNumber++;
+    saveLocalStorage();
 
 }
-
-
-//" + listNumber +"
 
 function addTask(id) {
     let myTask = $('#addTaskInput' + id).val();
     $('#taskBoxId' + id).append("<div class='eachTask'>" +
-        "<input type='checkbox'>" +
+        "<input onclick='completedTask()' id='checkboxChecked' type='checkbox'>" +
         "<span contenteditable='true'>" + myTask + "</span>" +
         "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"></i>" +
         "</div>");
+    masterList.collection[id].add( $('#addTaskInput' + id).val());
     $('#addTaskInput' + id).val("");
-    taskArray.push(myTask);
+    saveLocalStorage();
+
 }
 
 function addButton(event) {
-    switch(event.keyCode) {
-        case 13:
+    switch(event.key) {
+        case 'Enter':
             addList();
             break;
     }
 }
 
 function addTaskButton(event, id) {
-    switch(event.keyCode) {
-        case 13:
+    switch(event.key) {
+        case 'Enter':
             addTask(id);
             break;
     }
+}
+
+function completedTask () {
+    document.getElementById('checkboxChecked').checked = true;
+}
+
+function saveLocalStorage() {
+    localStorage.setItem('data', JSON.stringify(masterList.collection));
+    retrieveLocalStorage();
+}
+
+function retrieveLocalStorage() {
+    let pageText = localStorage.getItem('data');
+    return JSON.parse(pageText);
 }
 
 function deleteTask(element) {
