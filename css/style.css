@@ -12,8 +12,10 @@ body {
   color: #252525;
   position: relative; }
 
+.mainContainer {
+  width: 100%; }
+
 .topContainer {
-  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -32,22 +34,19 @@ body {
     box-sizing: unset;
     margin-bottom: 20px; }
 
-.middleContainer {
-  display: flex; }
-
-#list {
-  display: flex; }
-
 .listBox {
   padding: 20px;
   background-color: #FFFFFF;
   box-shadow: 20px 20px 50px #A5A5A5;
-  margin: 20px;
-  flex-wrap: wrap; }
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
 
 .listTitle {
   font-family: "Sigmar One", cursive;
-  font-size: 30px; }
+  font-size: 30px;
+  text-align: center; }
 
 .taskBox {
   padding: 50px;
@@ -57,14 +56,15 @@ body {
   border-radius: 5px;
   height: 40px;
   box-sizing: unset;
-  font-family: "Raleway", sans-serif; }
+  font-family: "Raleway", sans-serif;
+  margin-left: 30px; }
 
 .btn {
   background-color: #F2F2F2; }
 
-.clearButton {
-  position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  padding: 20px; }
+.toptaskbox {
+  margin-left: 35%; }
+
+.eachTask {
+  display: flex;
+  justify-content: space-between; }

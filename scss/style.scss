@@ -29,11 +29,12 @@ body {
 }
 
 .mainContainer {
+  width: 100%;
 
 }
 
 .topContainer {
-  width: 100%;
+  //width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -59,44 +60,69 @@ body {
 }
 
 .middleContainer {
-  display: flex;
+  //max-width: 100px;
+  //display: flex;
+  //flex-wrap: wrap;
+
 }
 
 #list {
-  display: flex;
+  //display: flex;
 }
 
 .listBox {
   padding: 20px;
   background-color: #FFFFFF;
   box-shadow: 20px 20px 50px $greytwo;
-  margin: 20px;
-  flex-wrap: wrap;
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
 }
 
 .listTitle {
   font-family: $accentfont;
   font-size: 30px;
+  //display: flex;
+
+  //justify-content: center;
+  text-align: center;
+  //flex-direction: column;
 }
 
 .taskBox {
   padding: 50px;
-
   font-family: $mainfont;
+
 }
 #addTaskInput {
   @include inputBox;
   font-family: $mainfont;
+  margin-left: 30px;
+
 }
 .btn {
   background-color: $greyone;
 }
+.toptaskbox {
+  margin-left: 35%;
+}
 
-.clearButton {
-  position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  padding: 20px;
+//.clearButton {
+//  position: absolute;
+//  right: 0;
+//  left: 0;
+//  bottom: 0;
+//  padding: 20px;
+//
+//}
+
+.eachTask {
+  display: flex;
+  justify-content: space-between;
+  
+}
+.taskTrash {
 
 }

@@ -1,4 +1,3 @@
-
 let dayArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 let monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 let todaysDay = dayArray [new Date().getDay()];
@@ -15,11 +14,32 @@ $('#addListInput').focus();
 let masterList = retrieveLocalStorage() || new AllLists();
 
 displayLists();
+
 function displayLists() {
-    const savedstuff = $('.list');
-    savedstuff.html('');
-    for (let i = 0; i < masterList.length; i++) {
-        savedstuff.append(`<div>${masterList[i]}</div>`);
+    if(localStorage.data) {
+        let savedStuff = JSON.parse(localStorage.data);
+        let myListTitle = $('#addListInput').val();
+
+        for(let l = 0; l < localStorage.data.length; l++) {
+            masterList.add(savedStuff[l].name);
+            $('#list').append("<div class='listBox'>" +
+                "<div class='listTitle' contenteditable='true'>" + myListTitle + "</div>" +
+                "<input type='text' id='addTaskInput" + listNumber + "' placeholder='Add Tasks Here' onkeyup='addTaskButton(event," + listNumber + ")'>" +
+                "<button class='btn btn-outline-secondary' onclick='addTask(" + listNumber + ")'>+</button>" +
+                "<div class='taskBox' id='taskBoxId" + listNumber + "'></div>" +
+                "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"</i>" +
+                "</div>");
+
+            let myTask = $('#addTaskInput').val();
+            for (let i = 0; i < savedStuff[l].collection.length; i++) {
+               masterList.collection[l].add(savedStuff[l].collection[i].name, savedStuff[l].collection[i].completed)
+                $('#taskBoxId').append("<div class='eachTask'>" +
+                    "<input onclick='completedTask(" + taskNumber + ")' id='checkboxChecked'" + taskNumber + " type='checkbox'>" +
+                    "<span contenteditable='true'>" + myTask + "</span>" +
+                    "<span><i onclick='deleteTask(this)' class='far fa-trash-alt taskTrash'></i></span>" +
+                    "</div>");
+            }
+        }
     }
 }
 
@@ -28,12 +48,12 @@ function addList() {
 
     $('#list').append("<div class='listBox'>" +
         "<div class='listTitle' contenteditable='true'>" + myListTitle + "</div>" +
-        "<input type='text' id='addTaskInput" + listNumber +"' placeholder='Add Tasks Here' onkeyup='addTaskButton(event," + listNumber +")'>" +
-        "<button class='btn btn-outline-secondary' onclick='addTask(" + listNumber +")'>+</button>" +
-        "<div class='taskBox' id='taskBoxId" + listNumber +"'></div>" +
+        "<div class='toptaskbox'><input type='text' id='addTaskInput" + listNumber + "' placeholder='Add Tasks Here' onkeyup='addTaskButton(event," + listNumber + ")'>" +
+        "<button class='btn btn-outline-secondary' onclick='addTask(" + listNumber + ")'>+</button></div>" +
+        "<div class='taskBox' id='taskBoxId" + listNumber + "'></div>" +
         "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"</i>" +
         "</div>");
-    masterList.add( $('#addListInput').val());
+    masterList.add($('#addListInput').val());
     $('#addListInput').val("");
     $('#addTaskInput').focus();
     listNumber++;
@@ -44,11 +64,11 @@ function addList() {
 function addTask(id) {
     let myTask = $('#addTaskInput' + id).val();
     $('#taskBoxId' + id).append("<div class='eachTask'>" +
-        "<input onclick='completedTask(" + id +", " + taskNumber +")' id='checkboxChecked'" + taskNumber + " type='checkbox'>" +
-        "<span contenteditable='true'>" + myTask + "</span>" +
+        "<div><input onclick='completedTask(" + id + ", " + taskNumber + ")' id='checkboxChecked'" + taskNumber + " type='checkbox'>" +
+        "<span contenteditable='true'>" + myTask + "</span></div>" +
         "<i onclick='deleteTask(this)' class=\"far fa-trash-alt\"></i>" +
         "</div>");
-    masterList.collection[id].add( $('#addTaskInput' + id).val());
+    masterList.collection[id].add($('#addTaskInput' + id).val());
     $('#addTaskInput' + id).val("");
     taskNumber++;
     saveLocalStorage();
@@ -56,7 +76,7 @@ function addTask(id) {
 }
 
 function addButton(event) {
-    switch(event.key) {
+    switch (event.key) {
         case 'Enter':
             addList();
             break;
@@ -64,7 +84,7 @@ function addButton(event) {
 }
 
 function addTaskButton(event, id) {
-    switch(event.key) {
+    switch (event.key) {
         case 'Enter':
             addTask(id);
             break;
@@ -79,38 +99,37 @@ function saveLocalStorage() {
 function retrieveLocalStorage() {
     let pageText = localStorage.getItem('data');
     let lists = JSON.parse(pageText);
-
     let newAllLists = new AllLists();
 
-    lists.forEach(list => {
-        let newSingleList = new SingleList();
-        newSingleList.name = list.name;
-        newSingleList.collection = list.collection;
-        newAllLists.collection.push(newSingleList);
-    });
+    if (lists) {
 
-    newAllLists.collection = lists;
+        lists.forEach(list => {
+            let newSingleList = new SingleList();
+            newSingleList.name = list.name;
+            newSingleList.collection = list.collection;
+            newAllLists.collection.push(newSingleList);
+        });
+    }
 
     return newAllLists;
 }
 
 function deleteTask(element) {
-  //  $(element).parent().fadeOut('slow', function() {
+    $(element).parent().slideUp('slow', function() {
         $(element).parent().remove();
-   // });
-
+    });
 }
 
-function completedTask (listIndex, taskIndex) {
+function completedTask(listIndex, taskIndex) {
     if ($('#checkboxChecked').prop('checked')) {
-        masterList.collection[listIndex].collection[taskIndex].completed =  true;
+        masterList.collection[listIndex].collection[taskIndex].completed = true;
     }
 
 }
 
-function clearCompleted () {
-    if (Item(completed === true)) {
-        this.remove();
+function clearCompleted() {
+    if (masterList.collection[listIndex].collection[taskIndex].completed === true) {
+        $(this).remove();
     }
 }
 
