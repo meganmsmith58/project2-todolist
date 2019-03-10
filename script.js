@@ -21,7 +21,7 @@ function displayLists() {
         let myListTitle = $('#addListInput').val();
 
         for(let l = 0; l < localStorage.data.length; l++) {
-            masterList.add(savedStuff[l].name);
+            masterList.add(savedStuff[l].myListTitle);
             $('#list').append("<div class='listBox'>" +
                 "<div class='listTitle' contenteditable='true'>" + myListTitle + "</div>" +
                 "<input type='text' id='addTaskInput" + listNumber + "' placeholder='Add Tasks Here' onkeyup='addTaskButton(event," + listNumber + ")'>" +
