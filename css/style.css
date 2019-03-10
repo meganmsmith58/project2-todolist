@@ -46,7 +46,9 @@ body {
 .listTitle {
   font-family: "Sigmar One", cursive;
   font-size: 30px;
-  text-align: center; }
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
 
 .taskBox {
   padding: 50px;
@@ -56,14 +58,10 @@ body {
   border-radius: 5px;
   height: 40px;
   box-sizing: unset;
-  font-family: "Raleway", sans-serif;
-  margin-left: 30px; }
+  font-family: "Raleway", sans-serif; }
 
 .btn {
   background-color: #F2F2F2; }
-
-.toptaskbox {
-  margin-left: 35%; }
 
 .eachTask {
   display: flex;

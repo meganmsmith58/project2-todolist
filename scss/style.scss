@@ -84,29 +84,30 @@ body {
 .listTitle {
   font-family: $accentfont;
   font-size: 30px;
-  //display: flex;
+  display: flex;
 
-  //justify-content: center;
-  text-align: center;
-  //flex-direction: column;
+  justify-content: center;
+  //text-align: center;
+  flex-direction: column;
 }
 
 .taskBox {
   padding: 50px;
   font-family: $mainfont;
+  //display: flex;
+
 
 }
 #addTaskInput {
   @include inputBox;
   font-family: $mainfont;
-  margin-left: 30px;
 
 }
 .btn {
   background-color: $greyone;
 }
 .toptaskbox {
-  margin-left: 35%;
+  //margin-left: 35%;
 }
 
 //.clearButton {
